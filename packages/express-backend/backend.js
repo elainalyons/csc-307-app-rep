@@ -103,7 +103,7 @@ app.post("/users", (req, res) => {
   const id = generateId();
   userToAdd.id = id;
   addUser(userToAdd);
-  res.status(201).send("Successful user insertion into list");
+  res.status(201).send(userToAdd);
 });
 
 app.get("/", (req, res) => {
