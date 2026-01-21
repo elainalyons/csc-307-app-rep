@@ -57,6 +57,10 @@ const addUser = (user) => {
 const findUserIndexById = (id) =>
   users["users_list"].findIndex((user) => user["id"] === id);
 
+const generateId = () => {
+  return Math.floor(100000 + Math.random() * 900000);
+};
+
 app.get("/users", (req, res) => {
   const name = req.query.name;
   const job = req.query.job;
@@ -96,8 +100,10 @@ app.delete("/users/:id", (req, res) => {
 
 app.post("/users", (req, res) => {
   const userToAdd = req.body;
+  const id = generateId();
+  userToAdd.id = id;
   addUser(userToAdd);
-  res.send();
+  res.status(201).send("Successful user insertion into list");
 });
 
 app.get("/", (req, res) => {
