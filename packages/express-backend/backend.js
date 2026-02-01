@@ -1,3 +1,5 @@
+// start by running node backend.js from express-backend directory
+
 import express from "express";
 import cors from "cors";
 

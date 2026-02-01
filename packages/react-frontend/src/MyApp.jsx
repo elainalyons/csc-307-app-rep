@@ -1,4 +1,5 @@
 // src/MyApp.jsx
+// can start frontend by running npm start from root directory of project
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import Form from "./Form";
