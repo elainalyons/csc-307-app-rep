@@ -2,13 +2,10 @@ import userModel from "../models/user.js";
 
 function getUsers(name, job) {
   let promise;
-  if (name === undefined && job === undefined) {
-    promise = userModel.find();
-  } else if (name && !job) {
-    promise = findUserByName(name);
-  } else if (job && !name) {
-    promise = findUserByJob(job);
-  }
+  const query = {};
+  if (name) query.name = name;
+  if (job) query.job = job;
+  promise = userModel.find(query);
   return promise;
 }
 
@@ -23,7 +20,7 @@ function addUser(user) {
 }
 
 function removeUser(id) {
-  const promise = userModel.deleteOne({ _id: id });
+  const promise = userModel.findByIdAndDelete({ _id: id });
   return promise;
 }
 
